@@ -14,6 +14,7 @@ public class PasswordDTO {
     private boolean uppercase;
     private boolean numbers;
     private boolean special;
+    private boolean spaces;
     private int length;
 
 }

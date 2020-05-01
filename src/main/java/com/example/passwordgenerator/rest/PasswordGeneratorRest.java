@@ -24,20 +24,32 @@ public class PasswordGeneratorRest {
       String uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       availableCharacters.append(uppercase);
     }
+
     if (dto.isNumbers()) {
       String numbers = "0123456789";
       availableCharacters.append(numbers);
     }
+
     if (dto.isSpecial()) {
       String symbols = "!@#$%^&*_=+-/.?<>)";
       availableCharacters.append(symbols);
     }
 
+    if (dto.isSpaces()) {
+      StringBuilder space = new StringBuilder();
+
+      for (int i = 0; i < dto.getLength() / 2; i++) {
+        space.append(" ");
+      }
+
+      availableCharacters.append(space);
+    }
+
     StringBuilder password = new StringBuilder();
 
-    for(int i = 0; i < dto.getLength(); i++) {
-        int random = (int) (Math.random() * availableCharacters.length());
-        password.append(availableCharacters.charAt(random));
+    for (int i = 0; i < dto.getLength(); i++) {
+      int random = (int) (Math.random() * availableCharacters.length());
+      password.append(availableCharacters.charAt(random));
     }
 
     return new ResponseEntity<>(password.toString(), HttpStatus.OK);

@@ -1,0 +1,7 @@
+{
+  "uppercase": true,
+  "numbers": true,
+  "special": true,
+  "spaces": true,
+  "length": 15
+}
