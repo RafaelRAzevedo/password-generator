@@ -3,16 +3,18 @@ package com.example.passwordgenerator.rest;
 import com.example.passwordgenerator.dto.PasswordDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class PasswordGeneratorRest {
 
+  @CrossOrigin(origins = "http://localhost:8080")
   @GetMapping("/generate")
+  @ResponseBody
+  @ResponseStatus(HttpStatus.OK)
   public ResponseEntity<String> getPassword(@RequestBody @Valid PasswordDTO dto) {
 
     String small = "abcdefghijklmnopqrstuvwxyz";
